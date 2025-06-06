@@ -17,38 +17,28 @@ public final class Cipher {
 
     public String encrypt(String text, int shift) {
         char[] result = new char[text.length()];
-        int index = 0;
-        for (char i : text.toLowerCase().toCharArray()) {
-            int j = alphabet.indexOf(i);
-            int temp = 0;
-            if (0 > shift) {
-                temp = alphabet.size() + ((shift + j) % alphabet.size());
-            } else {
-                temp = (j + shift) % alphabet.size();
-            }
-            result[index] = alphabet.get(temp);
-            index++;
-        }
-
+        fillResult(result, text, shift);
         return String.valueOf(result);
 
     }
 
     public String decrypt(String encryptedText, int shift) {
         char[] result = new char[encryptedText.length()];
+        fillResult(result, encryptedText, -shift);
+        return String.valueOf(result);
+    }
+
+    private void fillResult(char[] result, String text, int shift) {
         int index = 0;
-        for (char i : encryptedText.toLowerCase().toCharArray()) {
+        for (char i : text.toLowerCase().toCharArray()) {
             int j = alphabet.indexOf(i);
-            int temp = 0;
-            if (j < shift) {
-                temp = alphabet.size() - ((shift - j) % alphabet.size());
-            } else {
-                temp = (j - shift) % alphabet.size();
-            }
+            int temp = getIndex(j, shift);
             result[index] = alphabet.get(temp);
             index++;
         }
+    }
 
-        return String.valueOf(result);
+    private int getIndex(int alphabetIndex, int shift) {
+        return (alphabet.size() + (alphabetIndex + shift)) % alphabet.size();
     }
 }
