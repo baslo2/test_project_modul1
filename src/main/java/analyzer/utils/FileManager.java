@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public final class FileManager {
+
     public String readFile(String filePath) {
         try {
             return Files.readString(Path.of(filePath));

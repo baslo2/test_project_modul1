@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Cipher cipher = new Cipher(Utils.ABC.RUSSIAN_ABC);
+        Cipher cipher = new Cipher();
         FileManager fileManager = new FileManager();
         IValidator validator = new RussianValidator();
 
@@ -153,11 +153,12 @@ public class Main {
 
     private static String getOutputFilePath(Scanner sc) {
         System.out.println("Выхотите записать результат в файл? да/нет");
-        if (sc.next().equalsIgnoreCase("нет")) {
+        String answer = sc.next();
+        if (answer.equalsIgnoreCase("нет")) {
             return null;
         }
 
-        if (sc.next().equalsIgnoreCase("да")) {
+        if (answer.equalsIgnoreCase("да")) {
             System.out.println("Введите путь к выходному файлу:");
             return sc.next();
         }

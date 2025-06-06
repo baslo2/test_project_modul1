@@ -8,8 +8,6 @@ import java.util.Map;
 public final class StatisticalAnalyzer {
 
     public int findMostLikelyShift(String encryptedText, List<Character> alphabet, String representativeText) {
-        // Простая логика: найдем самый частый символ в обоих текстах и
-        // определим сдвиг
         char mostFrequentEncrypted = findMostFrequentChar(encryptedText);
         char mostFrequentOriginal = findMostFrequentChar(representativeText);
 
