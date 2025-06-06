@@ -18,6 +18,7 @@ public final class BruteForce {
             if (isNeedPrint) {
                 System.out.println(sb);
             }
+            sb.setLength(0);
         }
         result.setLength(result.length() - 1);
         return result.toString();
