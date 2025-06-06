@@ -22,9 +22,9 @@ public final class Cipher {
             int j = alphabet.indexOf(i);
             int temp = 0;
             if (0 > shift) {
-                temp = alphabet.size() + ((shift - j) % alphabet.size());
+                temp = alphabet.size() + ((shift + j) % alphabet.size());
             } else {
-                temp = (j - shift) % alphabet.size();
+                temp = (j + shift) % alphabet.size();
             }
             result[index] = alphabet.get(temp);
             index++;
