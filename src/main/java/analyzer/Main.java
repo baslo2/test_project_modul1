@@ -66,7 +66,7 @@ public class Main {
             System.out.println("Ошибка валидации входных данных.");
         }
 
-        String result = addNewLine(cipher.encrypt(fileManager.readFile(inFile), key));
+        String result = cipher.encrypt(fileManager.readFile(inFile), key);
         System.out.println("Шифрование завершено.");
 
         if (null == outFile) {

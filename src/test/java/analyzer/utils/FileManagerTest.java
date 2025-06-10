@@ -3,6 +3,8 @@ package analyzer.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import analyzer.TestUtils;
+
 class FileManagerTest {
 
     @Test
