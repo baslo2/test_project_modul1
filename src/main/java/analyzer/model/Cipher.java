@@ -16,19 +16,16 @@ public final class Cipher {
     }
 
     public String encrypt(String text, int shift) {
-        char[] result = new char[text.length()];
-        fillResult(result, text, shift);
-        return String.valueOf(result);
+        return fillResult(text, shift);
 
     }
 
     public String decrypt(String encryptedText, int shift) {
-        char[] result = new char[encryptedText.length()];
-        fillResult(result, encryptedText, -shift);
-        return String.valueOf(result);
+        return fillResult(encryptedText, -shift);
     }
 
-    private void fillResult(char[] result, String text, int shift) {
+    private String fillResult(String text, int shift) {
+        char[] result = new char[text.length()];
         int index = 0;
         for (char i : text.toLowerCase().toCharArray()) {
             int j = alphabet.indexOf(i);
@@ -36,6 +33,7 @@ public final class Cipher {
             result[index] = alphabet.get(temp);
             index++;
         }
+        return String.valueOf(result);
     }
 
     private int getIndex(int alphabetIndex, int shift) {
