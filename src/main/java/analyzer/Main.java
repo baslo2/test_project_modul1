@@ -66,7 +66,7 @@ public class Main {
             System.out.println("Ошибка валидации входных данных.");
         }
 
-        String result = cipher.encrypt(fileManager.readFile(inFile), key);
+        String result = addNewLine(cipher.encrypt(fileManager.readFile(inFile), key));
         System.out.println("Шифрование завершено.");
 
         if (null == outFile) {
@@ -90,7 +90,7 @@ public class Main {
         }
 
         String encryptedText = fileManager.readFile(inputFile);
-        String decryptedText = cipher.decrypt(encryptedText, decryptKey);
+        String decryptedText = addNewLine(cipher.decrypt(encryptedText, decryptKey));
         fileManager.writeFile(decryptedText, outputFile);
         System.out.println("Расшифровка завершена.");
     }
@@ -112,7 +112,8 @@ public class Main {
         }
 
         String encryptedText = fileManager.readFile(inputFile);
-        String result = new BruteForce().decryptByBruteForce(encryptedText, Utils.ABC.RUSSIAN_ABC, isNeedPrint);
+        String result = addNewLine(
+                new BruteForce().decryptByBruteForce(encryptedText, Utils.ABC.RUSSIAN_ABC, isNeedPrint));
         System.out.println("Расшифровка методом brute force завершена.");
 
         if (!isNeedWriteToFile) {
@@ -165,5 +166,9 @@ public class Main {
 
         System.out.println("Ответ пользователя не был определен.");
         return getOutputFilePath(sc);
+    }
+
+    private static String addNewLine(String text) {
+        return text.replace("    ", "\n");
     }
 }
